@@ -33,6 +33,32 @@ public:
         }
     }
 
+    void heapify(int i){
+        int largest = i;
+        int l = left(i);
+        int r = right(i);
+
+        if(l < heap.size() && heap[l] > heap[largest]){
+            largest =l;
+        }
+
+        if(r < heap.size() && heap[r] > heap[largest]){
+            largest =r;
+        }
+
+        if(largest != i){
+            swap(heap[i], heap[largest]);
+            heapify(largest);
+        }
+    }
+
+    void deleteRoot(){
+        if(heap.size()==0) return;
+        heap[0]= heap.back();
+        heap.pop_back();
+        heapify(0);
+    }
+
     void printHeap()
     {
         for (int x : heap)
@@ -53,5 +79,7 @@ int main()
     cout << "Heap elements are: ";
     h.printHeap();
     cout << "\n";
+    h.deleteRoot();
+    h.printHeap();
     return 0;
 }
