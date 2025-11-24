@@ -11,7 +11,7 @@ class Solution {
         int cost =0;
         while(pq.size()>1){
             int rope = pq.top();
-            pq.pop();
+            pq.pop(); 
             rope +=pq.top();
             pq.pop();
             cost += rope;
