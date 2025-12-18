@@ -27,11 +27,13 @@ class LinkedListQueue:
         if self.is_empty():
             print("Queue is empty")
             return None
-        val=self._front.data
-        self._front=self._front.next
-
-        if self._front is None:
-            self._rear=None
+        else:
+            val=self._front.data
+            if self._front.next is None:
+                self._front = None
+                self._rear = None
+            else:
+                self._front=self._front.next
         
         self._size -=1
         return val
@@ -56,20 +58,21 @@ class LinkedListQueue:
             curr= curr.next
         print("Queue (front to rear):", " <- ".join(elements))
     
+if __name__ == "__main__":
+    q= LinkedListQueue()
+    q.enqueue(27)
+    q.enqueue(17)
+    q.enqueue(7)
+    q.enqueue(37)
 
-q= LinkedListQueue()
-q.enqueue(27)
-q.enqueue(17)
-q.enqueue(7)
-q.enqueue(37)
+    q.display()
 
-q.display()
-
-q.dequeue()
-q.display()
+    q.dequeue()
+    q.display()
 
 
-q.enqueue(57)
-q.display()
+    q.enqueue(57)
+    q.display()
+    
 
     
