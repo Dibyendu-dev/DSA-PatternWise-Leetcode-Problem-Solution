@@ -21,7 +21,7 @@ class Queue:
             val = self._data[self._front]
             self._data[self._front]= None
             self._front=self._front+1
-            self._size=self._size=1
+            self._size=self._size-1
             return val
 
     def __str__(self):
