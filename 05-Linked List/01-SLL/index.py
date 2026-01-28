@@ -30,7 +30,7 @@ def insertAtLast(head,data):
 
 def insertAtAny(head,data,pos):
     newnode = Node(data)
-    
+
     if pos < 1:
         return head
     
@@ -47,6 +47,45 @@ def insertAtAny(head,data,pos):
     curr.next = newnode
     return head
 
+def delFirst(head):
+    if head is None:
+        return None
+    temp=head
+    head= head.next
+    temp=None
+    return head
+
+def delLast(head):
+    if head is None:
+        return None
+    if head.next is None:
+        return None
+    
+    secLast = head
+    while secLast.next.next is not None:
+        secLast = secLast.next
+    secLast.next=None
+    return head
+
+def delAtAny(head,position):
+    if head is None or position < 1:
+        return head
+    
+    temp = head
+    
+    if position == 1:
+        head = temp.next
+        return head
+    
+    for i in range(1,position-1):
+        if temp.next is None:
+            return head
+        temp = temp.next
+
+    if temp.next is None:
+        return head
+    temp.next = temp.next.next
+    return head
 
 def printSLL(head):
     curr = head
@@ -71,5 +110,13 @@ if __name__ == "__main__":
     printSLL(head)
     head = insertAtAny(head,4548,2)
     printSLL(head)
+    head= delFirst(head)
+    printSLL(head)
+    head= delLast(head)
+    printSLL(head)
+    head= delAtAny(head,2)
+    printSLL(head)
+
+
 
 
