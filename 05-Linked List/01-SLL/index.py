@@ -87,6 +87,14 @@ def delAtAny(head,position):
     temp.next = temp.next.next
     return head
 
+def search(head,val):
+    curr = head
+    while curr is not None:
+        if curr.data == val:
+            return True
+        curr = curr.next
+    return False
+
 def printSLL(head):
     curr = head
     while curr:
@@ -116,6 +124,14 @@ if __name__ == "__main__":
     printSLL(head)
     head= delAtAny(head,2)
     printSLL(head)
+
+    if search(head,50):
+        print("search value is found")
+    else:
+        print("search value is not found")
+        
+
+
 
 
 
