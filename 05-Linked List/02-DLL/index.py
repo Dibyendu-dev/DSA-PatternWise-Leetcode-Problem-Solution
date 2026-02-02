@@ -18,12 +18,52 @@ def bck_traverse(head):
         temp=temp.prev
     print() 
 
+def inserAtFront(head,data):
+    newNode = Node(data)
+    newNode.next = head
+    if head is not None:
+        head.prev = newNode
+    head = newNode
+    return head
+
+def inserAtEnd(head,data):
+    newNode = Node(data)
+    if head is None:
+        return newNode
+    temp = head
+    while temp.next is not None:
+        temp = temp.next
+    temp.next = newNode
+    newNode.prev = temp
+    return head
+
+def inserAtPos(head, pos, data):
+    if pos < 1:
+        return head
+    if pos == 1:
+        return inserAtFront(head, data)
+    
+    newNode = Node(data)
+    temp = head
+    for _ in range(pos - 1):
+        if temp is None:
+            return head
+        temp = temp.next
+    if temp is None:
+        return head
+    newNode.next = temp.next
+    newNode.prev = temp
+    if temp.next is not None:
+        temp.next.prev = newNode
+    temp.next = newNode
+    return head
+
 def printdll(head):
     temp = head
     while temp:
         print(temp.data,end="<->")
         temp= temp.next
-    print()
+    print(None)
 
 
 if __name__=="__main__":
