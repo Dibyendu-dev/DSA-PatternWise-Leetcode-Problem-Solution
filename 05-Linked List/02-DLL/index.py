@@ -58,6 +58,48 @@ def inserAtPos(head, pos, data):
     temp.next = newNode
     return head
 
+def deleteFromFront(head):
+    if head is None:
+        return None
+    head = head.next
+    if head is not None:
+        head.prev = None
+    return head
+
+def deleteFromEnd(head):
+    if head is None:
+        return None
+    if head.next is None:
+        return None
+    temp = head
+    while temp.next is not None:
+        temp = temp.next
+    temp.prev.next = None
+    temp.prev = None
+
+    return head
+
+def deleteFromPos(head, pos):
+    if head is None or pos < 1:
+        return head
+    if pos == 1:
+        return deleteFromFront(head)
+    
+    temp = head
+    for _ in range(pos - 1):
+        if temp is None:
+            return head
+        temp = temp.next
+    if temp is None:
+        return head
+    if temp.next is not None:
+        temp.next.prev = temp.prev
+    if temp.prev is not None:
+        temp.prev.next = temp.next
+    temp.prev = None
+    temp.next = None
+    return head
+
 def printdll(head):
     temp = head
     while temp:
