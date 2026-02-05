@@ -1,3 +1,5 @@
+from collections import deque
+
 class Solution:
     def bfs(self, adj):
         V=len(adj)

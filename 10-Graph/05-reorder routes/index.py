@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def minReorder(self, n: int, connections: List[List[int]]) -> int:
         graph = [[] for _ in range(n)]
